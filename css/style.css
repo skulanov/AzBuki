@@ -47,6 +47,100 @@ main {
     margin-bottom: 2rem;
 }
 
+.letter-case-toggle {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+}
+
+.toggle-label {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 0.75rem 1rem;
+    border-radius: 50px;
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+}
+
+.toggle-label:hover {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.4);
+}
+
+.toggle-input {
+    display: none;
+}
+
+.toggle-slider {
+    width: 50px;
+    height: 24px;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 50px;
+    position: relative;
+    margin-right: 1rem;
+    transition: all 0.3s ease;
+}
+
+.toggle-slider::before {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: white;
+    border-radius: 50%;
+    top: 2px;
+    left: 2px;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.toggle-input:checked + .toggle-slider {
+    background: rgba(255, 255, 255, 0.5);
+}
+
+.toggle-input:checked + .toggle-slider::before {
+    transform: translateX(26px);
+}
+
+.toggle-text {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: 'Ponomar', 'Times New Roman', serif;
+    font-size: 1.2rem;
+    color: white;
+    font-weight: 500;
+}
+
+.case-upper,
+.case-lower {
+    transition: all 0.3s ease;
+}
+
+.toggle-input:not(:checked) ~ .toggle-text .case-upper {
+    color: white;
+    font-weight: 600;
+}
+
+.toggle-input:not(:checked) ~ .toggle-text .case-lower {
+    color: rgba(255, 255, 255, 0.6);
+    font-weight: 400;
+}
+
+.toggle-input:checked ~ .toggle-text .case-upper {
+    color: rgba(255, 255, 255, 0.6);
+    font-weight: 400;
+}
+
+.toggle-input:checked ~ .toggle-text .case-lower {
+    color: white;
+    font-weight: 600;
+}
+
 .flashcard {
     background: white;
     border-radius: 20px;
@@ -112,59 +206,7 @@ main {
 
 
 
-.controls {
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
-    margin-bottom: 2rem;
-    flex-wrap: wrap;
-}
 
-.btn {
-    padding: 0.75rem 1.5rem;
-    border: none;
-    border-radius: 50px;
-    font-size: 1rem;
-    font-weight: 500;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    font-family: 'Inter', Arial, sans-serif;
-}
-
-.btn-primary {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
-    box-shadow: 0 4px 15px rgba(118, 75, 162, 0.4);
-}
-
-.btn-primary:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(118, 75, 162, 0.6);
-}
-
-.btn-secondary {
-    background: white;
-    color: #667eea;
-    border: 2px solid #667eea;
-}
-
-.btn-secondary:hover {
-    background: #667eea;
-    color: white;
-    transform: translateY(-2px);
-}
-
-.btn-outline {
-    background: transparent;
-    color: white;
-    border: 2px solid rgba(255, 255, 255, 0.3);
-}
-
-.btn-outline:hover {
-    background: rgba(255, 255, 255, 0.1);
-    border-color: rgba(255, 255, 255, 0.6);
-    transform: translateY(-2px);
-}
 
 
 
@@ -204,10 +246,30 @@ footer {
         gap: 0.5rem;
     }
     
-    .btn {
-        padding: 0.6rem 1.2rem;
-        font-size: 0.9rem;
+    .toggle-label {
+        padding: 0.6rem 0.8rem;
     }
+    
+    .toggle-slider {
+        width: 40px;
+        height: 20px;
+        margin-right: 0.8rem;
+    }
+    
+    .toggle-slider::before {
+        width: 16px;
+        height: 16px;
+    }
+    
+    .toggle-input:checked + .toggle-slider::before {
+        transform: translateX(20px);
+    }
+    
+    .toggle-text {
+        font-size: 1rem;
+    }
+    
+
     
 
 }
@@ -232,6 +294,33 @@ footer {
     
     .letter-name {
         font-size: 1.5rem;
+    }
+    
+    .letter-case-toggle {
+        margin-bottom: 1rem;
+    }
+    
+    .toggle-label {
+        padding: 0.5rem 0.7rem;
+    }
+    
+    .toggle-slider {
+        width: 36px;
+        height: 18px;
+        margin-right: 0.6rem;
+    }
+    
+    .toggle-slider::before {
+        width: 14px;
+        height: 14px;
+    }
+    
+    .toggle-input:checked + .toggle-slider::before {
+        transform: translateX(18px);
+    }
+    
+    .toggle-text {
+        font-size: 0.9rem;
     }
     
 
