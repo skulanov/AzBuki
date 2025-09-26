@@ -6,14 +6,13 @@ class ChurchSlavonicApp {
         this.currentIndex = 0;
         this.isNameVisible = false;
         this.shuffledLetters = [];
+        this.isLowercase = false; // по умолчанию прописные буквы
         
         // Элементы DOM
         this.letterElement = document.getElementById('letter');
         this.letterNameElement = document.getElementById('letterName');
         this.flashcard = document.getElementById('flashcard');
-        this.nextCardBtn = document.getElementById('nextCardBtn');
-        this.prevCardBtn = document.getElementById('prevCardBtn');
-        this.showNameBtn = document.getElementById('showNameBtn');
+        this.caseToggle = document.getElementById('caseToggle');
         
         this.init();
     }
@@ -51,8 +50,9 @@ class ChurchSlavonicApp {
     displayCurrentLetter() {
         const currentLetter = this.shuffledLetters[this.currentIndex];
         
-        // Показываем букву
-        this.letterElement.textContent = currentLetter.letter;
+        // Показываем букву в зависимости от переключателя
+        const letterToShow = this.isLowercase ? currentLetter.lowercase : currentLetter.uppercase;
+        this.letterElement.textContent = letterToShow;
         
         // Скрываем название
         this.hideLetterName();
@@ -60,7 +60,7 @@ class ChurchSlavonicApp {
         // Анимация появления карточки
         this.animateCardAppearance();
         
-        console.log(`Показана буква: ${currentLetter.letter} (${currentLetter.name})`);
+        console.log(`Показана буква: ${letterToShow} (${currentLetter.name})`);
     }
     
     showLetterName() {
@@ -118,21 +118,13 @@ class ChurchSlavonicApp {
             this.showLetterName();
         });
         
-        // Кнопка "Следующая карточка"
-        this.nextCardBtn.addEventListener('click', () => {
-            this.nextCard();
-        });
+
         
-        // Кнопка "Предыдущая карточка"
-        this.prevCardBtn.addEventListener('click', () => {
-            this.prevCard();
-        });
-        
-        // Кнопка "Показать название"
-        this.showNameBtn.addEventListener('click', () => {
-            if (!this.isNameVisible) {
-                this.showLetterName();
-            }
+        // Переключатель регистра букв
+        this.caseToggle.addEventListener('change', (event) => {
+            this.isLowercase = event.target.checked;
+            this.displayCurrentLetter(); // Перерисовываем текущую букву
+            console.log(`Переключен регистр на: ${this.isLowercase ? 'строчные' : 'прописные'} буквы`);
         });
         
         // Обработка клавиш клавиатуры
