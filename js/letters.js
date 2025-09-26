@@ -11,7 +11,7 @@ const churchSlavonicAlphabet = [
     { uppercase: "З", lowercase: "з", name: "земля́" },
     { uppercase: "И", lowercase: "и", name: "и́же" },
     { uppercase: "І", lowercase: "і", name: "и" },
-    { uppercase: "К", lowercase: "к", name: "како́" },
+    { uppercase: "К", lowercase: "к", name: "ка́ко" },
     { uppercase: "Л", lowercase: "л", name: "лю́диє" },
     { uppercase: "М", lowercase: "м", name: "мыслѣ́тє" },
     { uppercase: "Н", lowercase: "н", name: "нашь" },
