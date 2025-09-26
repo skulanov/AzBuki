@@ -10,7 +10,7 @@
 </head>
 <body>
     <header>
-        <h1>Церковно-славянская азбука</h1>
+        <h1>Церковнославянская азбука</h1>
     </header>
 
     <main>
@@ -23,11 +23,18 @@
             </div>
         </div>
 
-        <div class="controls">
-            <button id="prevCardBtn" class="btn btn-outline">← Предыдущая</button>
-            <button id="showNameBtn" class="btn btn-secondary">Показать название</button>
-            <button id="nextCardBtn" class="btn btn-primary">Следующая →</button>
+        <div class="letter-case-toggle">
+            <label class="toggle-label">
+                <input type="checkbox" id="caseToggle" class="toggle-input">
+                <span class="toggle-slider"></span>
+                <span class="toggle-text">
+                    <span class="case-upper">Аа</span>
+                    <span class="case-lower">аа</span>
+                </span>
+            </label>
         </div>
+
+
 
 
 
@@ -35,7 +42,7 @@
     </main>
 
     <footer>
-        <p>Coded by Dima S., 2025</p>
+        <p>by Dima Skulanov, 2025</p>
     </footer>
 
     <script src="js/letters.js"></script>
