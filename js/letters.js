@@ -1,0 +1,51 @@
+// Церковно-славянская азбука с названиями букв и ударениями
+const churchSlavonicAlphabet = [
+    { letter: "А", name: "а́зъ" },
+    { letter: "Б", name: "бу́ки" },
+    { letter: "В", name: "вѣ́ди" },
+    { letter: "Г", name: "глаго́ль" },
+    { letter: "Д", name: "добро́" },
+    { letter: "Є", name: "є́сть" },
+    { letter: "Ж", name: "живѣ́тє" },
+    { letter: "Ꙃ", name: "ѕѣло́" },
+    { letter: "З", name: "земля́" },
+    { letter: "И", name: "и́же" },
+    { letter: "І", name: "и" },
+    { letter: "К", name: "како́" },
+    { letter: "Л", name: "лю́диє" },
+    { letter: "М", name: "мыслѣ́тє" },
+    { letter: "Н", name: "нашь" },
+    { letter: "О", name: "о́нъ" },
+    { letter: "П", name: "поко́й" },
+    { letter: "Р", name: "рьци́" },
+    { letter: "С", name: "сло́во" },
+    { letter: "Т", name: "тве́рдо" },
+    { letter: "Ѵ", name: "у́къ" },
+    { letter: "Ф", name: "фе́ртъ" },
+    { letter: "Х", name: "хѣ́ръ" },
+    { letter: "Ѡ", name: "о́тъ" },
+    { letter: "Ц", name: "ци" },
+    { letter: "Ч", name: "че́рвь" },
+    { letter: "Ш", name: "ша" },
+    { letter: "Щ", name: "шта" },
+    { letter: "Ъ", name: "є́ръ" },
+    { letter: "Ы", name: "є́ры" },
+    { letter: "Ь", name: "є́рь" },
+    { letter: "Ѣ", name: "ять" },
+    { letter: "Ю", name: "ю" },
+    { letter: "Ꙗ", name: "я́" },
+    { letter: "Ѥ", name: "є́" },
+    { letter: "Ѧ", name: "ю́съ ма́лъ" },
+    { letter: "Ѩ", name: "ю́съ" },
+    { letter: "Ѫ", name: "ю́съ вели́къ" },
+    { letter: "Ѭ", name: "ю́съ" },
+    { letter: "Ѯ", name: "кси́" },
+    { letter: "Ѱ", name: "пси́" },
+    { letter: "Ѳ", name: "ѳи́та" },
+    { letter: "Ѵ", name: "ижи́ца" }
+];
+
+// Экспорт для использования в других файлах
+if (typeof module !== 'undefined' && module.exports) {
+    module.exports = churchSlavonicAlphabet;
+}
