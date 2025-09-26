@@ -127,6 +127,25 @@ class ChurchSlavonicApp {
             console.log(`Переключен регистр на: ${this.isLowercase ? 'строчные' : 'прописные'} буквы`);
         });
         
+        // Дополнительные обработчики для мобильных устройств
+        const toggleLabel = document.querySelector('.toggle-label');
+        if (toggleLabel) {
+            // Обработчик touchstart для лучшей отзывчивости на мобильных
+            toggleLabel.addEventListener('touchstart', (event) => {
+                event.preventDefault();
+                this.caseToggle.checked = !this.caseToggle.checked;
+                this.caseToggle.dispatchEvent(new Event('change'));
+            }, { passive: false });
+            
+            // Обработчик клика для резервной функциональности
+            toggleLabel.addEventListener('click', (event) => {
+                // Убеждаемся, что событие не дублируется с touchstart
+                if (event.type === 'click' && event.detail === 0) {
+                    return;
+                }
+            });
+        }
+        
         // Обработка клавиш клавиатуры
         document.addEventListener('keydown', (event) => {
             switch (event.key) {
