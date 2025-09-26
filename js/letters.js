@@ -42,7 +42,7 @@ const churchSlavonicAlphabet = [
     { uppercase: "Ѯ", lowercase: "ѯ", name: "кси́" },
     { uppercase: "Ѱ", lowercase: "ѱ", name: "пси́" },
     { uppercase: "Ѳ", lowercase: "ѳ", name: "ѳи́та" },
-    { uppercase: "Ѵ", lowercase: "ѵ", name: "ижи́ца" }
+    { uppercase: "Ѵ", lowercase: "ѵ", name: "и́жица" }
 ];
 
 // Экспорт для использования в других файлах
