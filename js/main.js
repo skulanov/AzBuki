@@ -6,11 +6,13 @@ class ChurchSlavonicApp {
         this.currentIndex = 0;
         this.isNameVisible = false;
         this.shuffledLetters = [];
+        this.rememberedLetters = new Set(); // Множество для хранения ID запомненных букв
         
         // Элементы DOM
         this.letterElement = document.getElementById('letter');
         this.letterNameElement = document.getElementById('letterName');
         this.flashcard = document.getElementById('flashcard');
+        this.rememberBtn = document.getElementById('rememberBtn');
 
         
         this.init();
@@ -37,13 +39,25 @@ class ChurchSlavonicApp {
     }
     
     shuffleLetters() {
-        // Создаем копию массива и перемешиваем его
-        this.shuffledLetters = [...this.letters];
+        // Фильтруем буквы, исключая запомненные
+        const availableLetters = this.letters.filter((letter, index) => 
+            !this.rememberedLetters.has(index)
+        );
+        
+        // Если все буквы запомнены, показываем сообщение
+        if (availableLetters.length === 0) {
+            this.showCompletionMessage();
+            return;
+        }
+        
+        // Создаем копию доступных букв и перемешиваем
+        this.shuffledLetters = [...availableLetters];
         for (let i = this.shuffledLetters.length - 1; i > 0; i--) {
             const j = Math.floor(Math.random() * (i + 1));
             [this.shuffledLetters[i], this.shuffledLetters[j]] = [this.shuffledLetters[j], this.shuffledLetters[i]];
         }
-        console.log('Буквы перемешаны');
+        
+        console.log(`Буквы перемешаны. Доступно: ${availableLetters.length}, запомнено: ${this.rememberedLetters.size}`);
     }
     
     displayCurrentLetter() {
@@ -110,6 +124,46 @@ class ChurchSlavonicApp {
         }, 100);
     }
     
+    showCompletionMessage() {
+        this.letterElement.innerHTML = '<span style="font-size: 0.4em; color: #48bb78;">🎉</span>';
+        this.letterNameElement.textContent = 'Все буквы изучены!';
+        this.letterNameElement.classList.add('show');
+        this.rememberBtn.style.display = 'none';
+        console.log('Все буквы изучены!');
+    }
+    
+    rememberCurrentLetter() {
+        if (this.shuffledLetters.length === 0) return;
+        
+        const currentLetter = this.shuffledLetters[this.currentIndex];
+        
+        // Находим индекс текущей буквы в исходном массиве
+        const originalIndex = this.letters.findIndex(letter => 
+            letter.uppercase === currentLetter.uppercase && 
+            letter.lowercase === currentLetter.lowercase
+        );
+        
+        if (originalIndex !== -1) {
+            this.rememberedLetters.add(originalIndex);
+            console.log(`Буква запомнена: ${currentLetter.uppercase}${currentLetter.lowercase} (${currentLetter.name})`);
+            
+            // Обновляем текст кнопки
+            this.updateRememberButtonText();
+            
+            // Переходим к следующей букве
+            this.nextCard();
+        }
+    }
+    
+    updateRememberButtonText() {
+        const rememberedCount = this.rememberedLetters.size;
+        if (rememberedCount > 0) {
+            this.rememberBtn.textContent = `Помню ${rememberedCount} из 41`;
+        } else {
+            this.rememberBtn.textContent = 'Помню';
+        }
+    }
+    
     addEventListeners() {
         // Клик по карточке
         this.flashcard.addEventListener('click', () => {
@@ -119,6 +173,11 @@ class ChurchSlavonicApp {
 
         
 
+        
+        // Кнопка "Помню"
+        this.rememberBtn.addEventListener('click', () => {
+            this.rememberCurrentLetter();
+        });
         
         // Обработка клавиш клавиатуры
         document.addEventListener('keydown', (event) => {
@@ -137,6 +196,13 @@ class ChurchSlavonicApp {
                 case 'ArrowUp':
                     event.preventDefault();
                     this.prevCard();
+                    break;
+                case 'r':
+                case 'R':
+                case 'к':
+                case 'К':
+                    event.preventDefault();
+                    this.rememberCurrentLetter();
                     break;
             }
         });
