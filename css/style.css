@@ -57,7 +57,7 @@ main {
     cursor: pointer;
     transition: all 0.3s ease;
     width: 400px;
-    height: 350px;
+    height: 525px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -82,7 +82,7 @@ main {
 
 .letter {
     font-family: 'Pochaevsk', 'Times New Roman', serif;
-    font-size: 7.5rem;
+    font-size: 15rem;
     font-weight: 400;
     color: #4a5568;
     margin-bottom: 1rem;
@@ -101,11 +101,11 @@ main {
 
 .letter-name {
     font-family: 'Pochaevsk', 'Times New Roman', serif;
-    font-size: 2.5rem;
-    color: #2d3748;
+    font-size: 5rem;
+    color: #4a5568;
     font-weight: 400;
     margin-top: 1rem;
-    min-height: 3rem;
+    min-height: 6rem;
     opacity: 0;
     visibility: hidden;
     transition: opacity 0.5s ease, visibility 0.5s ease;
@@ -154,12 +154,12 @@ footer {
     
     .flashcard {
         width: 350px;
-        height: 300px;
+        height: 450px;
         padding: 2rem 1.5rem;
     }
     
     .letter {
-        font-size: 5.5rem;
+        font-size: 11rem;
     }
     
     .letter .lowercase {
@@ -167,8 +167,8 @@ footer {
     }
     
     .letter-name {
-        font-size: 2rem;
-        min-height: 2.5rem;
+        font-size: 4rem;
+        min-height: 5rem;
     }
     
     .controls {
@@ -193,12 +193,12 @@ footer {
     
     .flashcard {
         width: 300px;
-        height: 250px;
+        height: 375px;
         padding: 1.5rem 1rem;
     }
     
     .letter {
-        font-size: 4rem;
+        font-size: 8rem;
     }
     
     .letter .lowercase {
@@ -206,8 +206,8 @@ footer {
     }
     
     .letter-name {
-        font-size: 1.5rem;
-        min-height: 2rem;
+        font-size: 3rem;
+        min-height: 4rem;
     }
     
 
