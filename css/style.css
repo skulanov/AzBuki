@@ -93,6 +93,12 @@ main {
     transition: all 0.3s ease;
 }
 
+/* Стили для строчных букв - 80% размера */
+.letter .lowercase {
+    font-size: 0.8em;
+    vertical-align: baseline;
+}
+
 .letter-name {
     font-family: 'Pochaevsk', 'Times New Roman', serif;
     font-size: 2.5rem;
@@ -156,6 +162,10 @@ footer {
         font-size: 5.5rem;
     }
     
+    .letter .lowercase {
+        font-size: 0.8em;
+    }
+    
     .letter-name {
         font-size: 2rem;
         min-height: 2.5rem;
@@ -189,6 +199,10 @@ footer {
     
     .letter {
         font-size: 4rem;
+    }
+    
+    .letter .lowercase {
+        font-size: 0.8em;
     }
     
     .letter-name {

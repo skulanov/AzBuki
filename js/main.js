@@ -49,9 +49,10 @@ class ChurchSlavonicApp {
     displayCurrentLetter() {
         const currentLetter = this.shuffledLetters[this.currentIndex];
         
-        // Показываем обе буквы в формате "Аа"
-        const letterToShow = currentLetter.uppercase + currentLetter.lowercase;
-        this.letterElement.textContent = letterToShow;
+        // Создаем HTML с разными размерами для прописной и строчной букв
+        const upperSpan = `<span class="uppercase">${currentLetter.uppercase}</span>`;
+        const lowerSpan = `<span class="lowercase">${currentLetter.lowercase}</span>`;
+        this.letterElement.innerHTML = upperSpan + lowerSpan;
         
         // Скрываем название
         this.hideLetterName();
@@ -59,7 +60,7 @@ class ChurchSlavonicApp {
         // Анимация появления карточки
         this.animateCardAppearance();
         
-        console.log(`Показана буква: ${letterToShow} (${currentLetter.name})`);
+        console.log(`Показана буква: ${currentLetter.uppercase}${currentLetter.lowercase} (${currentLetter.name})`);
     }
     
     showLetterName() {
