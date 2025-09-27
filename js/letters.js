@@ -34,7 +34,7 @@ const churchSlavonicAlphabet = [
     { uppercase: String.fromCodePoint(0x042C), lowercase: String.fromCodePoint(0x044C), name: "є́рь" },
     { uppercase: String.fromCodePoint(0x0462), lowercase: String.fromCodePoint(0x0463), name: "ꙗть" },
     { uppercase: String.fromCodePoint(0x042E), lowercase: String.fromCodePoint(0x044E), name: "ю" },
-    { uppercase: String.fromCodePoint(0xA656), lowercase: String.fromCodePoint(0xA657), name: "а́зъ иотированъ" },
+    { uppercase: String.fromCodePoint(0xA656), lowercase: String.fromCodePoint(0xA657), name: "ю́съ иотированъ" },
     { uppercase: String.fromCodePoint(0x0466), lowercase: String.fromCodePoint(0x0467), name: "ю́съ ма́лъ" },
     { uppercase: String.fromCodePoint(0x046A), lowercase: String.fromCodePoint(0x046B), name: "ю́съ вели́къ" },
     { uppercase: String.fromCodePoint(0x046E), lowercase: String.fromCodePoint(0x046F), name: "кси́" },
