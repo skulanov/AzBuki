@@ -6,13 +6,12 @@ class ChurchSlavonicApp {
         this.currentIndex = 0;
         this.isNameVisible = false;
         this.shuffledLetters = [];
-        this.isLowercase = false; // по умолчанию прописные буквы
         
         // Элементы DOM
         this.letterElement = document.getElementById('letter');
         this.letterNameElement = document.getElementById('letterName');
         this.flashcard = document.getElementById('flashcard');
-        this.caseToggle = document.getElementById('caseToggle');
+
         
         this.init();
     }
@@ -50,8 +49,8 @@ class ChurchSlavonicApp {
     displayCurrentLetter() {
         const currentLetter = this.shuffledLetters[this.currentIndex];
         
-        // Показываем букву в зависимости от переключателя
-        const letterToShow = this.isLowercase ? currentLetter.lowercase : currentLetter.uppercase;
+        // Показываем обе буквы в формате "Аа"
+        const letterToShow = currentLetter.uppercase + currentLetter.lowercase;
         this.letterElement.textContent = letterToShow;
         
         // Скрываем название
@@ -67,7 +66,6 @@ class ChurchSlavonicApp {
         if (!this.isNameVisible) {
             const currentLetter = this.shuffledLetters[this.currentIndex];
             this.letterNameElement.textContent = currentLetter.name;
-            this.letterNameElement.style.display = 'block';
             this.letterNameElement.classList.add('show');
             this.isNameVisible = true;
             
@@ -78,7 +76,6 @@ class ChurchSlavonicApp {
     }
     
     hideLetterName() {
-        this.letterNameElement.style.display = 'none';
         this.letterNameElement.classList.remove('show');
         this.isNameVisible = false;
     }
@@ -120,31 +117,7 @@ class ChurchSlavonicApp {
         
 
         
-        // Переключатель регистра букв
-        this.caseToggle.addEventListener('change', (event) => {
-            this.isLowercase = event.target.checked;
-            this.displayCurrentLetter(); // Перерисовываем текущую букву
-            console.log(`Переключен регистр на: ${this.isLowercase ? 'строчные' : 'прописные'} буквы`);
-        });
-        
-        // Дополнительные обработчики для мобильных устройств
-        const toggleLabel = document.querySelector('.toggle-label');
-        if (toggleLabel) {
-            // Обработчик touchstart для лучшей отзывчивости на мобильных
-            toggleLabel.addEventListener('touchstart', (event) => {
-                event.preventDefault();
-                this.caseToggle.checked = !this.caseToggle.checked;
-                this.caseToggle.dispatchEvent(new Event('change'));
-            }, { passive: false });
-            
-            // Обработчик клика для резервной функциональности
-            toggleLabel.addEventListener('click', (event) => {
-                // Убеждаемся, что событие не дублируется с touchstart
-                if (event.type === 'click' && event.detail === 0) {
-                    return;
-                }
-            });
-        }
+
         
         // Обработка клавиш клавиатуры
         document.addEventListener('keydown', (event) => {
