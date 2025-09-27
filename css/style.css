@@ -1,4 +1,4 @@
-/* Подключение церковно-славянского шрифта Ponomar */
+/* Подключение церковнославянского шрифта Pochaevsk */
 @import url('https://fonts.googleapis.com/css2?family=Pochaevsk&display=swap');
 
 /* Основные стили */
@@ -47,131 +47,7 @@ main {
     margin-bottom: 2rem;
 }
 
-.letter-case-toggle {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 1.5rem;
-}
 
-.toggle-label {
-    position: relative;
-    display: inline-flex;
-    align-items: center;
-    cursor: pointer;
-    background: rgba(255, 255, 255, 0.1);
-    padding: 0.75rem 1rem;
-    border-radius: 50px;
-    backdrop-filter: blur(10px);
-    border: 2px solid rgba(255, 255, 255, 0.2);
-    transition: all 0.3s ease;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    -webkit-tap-highlight-color: transparent;
-    touch-action: manipulation;
-}
-
-.toggle-label:hover {
-    background: rgba(255, 255, 255, 0.15);
-    border-color: rgba(255, 255, 255, 0.4);
-}
-
-.toggle-label:active {
-    background: rgba(255, 255, 255, 0.2);
-    border-color: rgba(255, 255, 255, 0.5);
-    transform: scale(0.98);
-}
-
-/* Специальные стили для touch-устройств */
-@media (hover: none) and (pointer: coarse) {
-    .toggle-label {
-        padding: 1.2rem 1.5rem;
-        min-height: 70px;
-        border: 4px solid rgba(255, 255, 255, 0.4);
-    }
-    
-    .toggle-label:hover {
-        background: rgba(255, 255, 255, 0.1);
-        border-color: rgba(255, 255, 255, 0.2);
-    }
-    
-    .toggle-label:active {
-        background: rgba(255, 255, 255, 0.25);
-        border-color: rgba(255, 255, 255, 0.6);
-        transform: scale(0.95);
-    }
-}
-
-.toggle-input {
-    display: none;
-}
-
-.toggle-slider {
-    width: 50px;
-    height: 24px;
-    background: rgba(255, 255, 255, 0.3);
-    border-radius: 50px;
-    position: relative;
-    margin-right: 1rem;
-    transition: all 0.3s ease;
-}
-
-.toggle-slider::before {
-    content: '';
-    position: absolute;
-    width: 20px;
-    height: 20px;
-    background: white;
-    border-radius: 50%;
-    top: 2px;
-    left: 2px;
-    transition: all 0.3s ease;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-}
-
-.toggle-input:checked + .toggle-slider {
-    background: rgba(255, 255, 255, 0.5);
-}
-
-.toggle-input:checked + .toggle-slider::before {
-    transform: translateX(26px);
-}
-
-.toggle-text {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    font-family: 'Ponomar', 'Times New Roman', serif;
-    font-size: 1.2rem;
-    color: white;
-    font-weight: 500;
-}
-
-.case-upper,
-.case-lower {
-    transition: all 0.3s ease;
-}
-
-.toggle-input:not(:checked) ~ .toggle-text .case-upper {
-    color: white;
-    font-weight: 600;
-}
-
-.toggle-input:not(:checked) ~ .toggle-text .case-lower {
-    color: rgba(255, 255, 255, 0.6);
-    font-weight: 400;
-}
-
-.toggle-input:checked ~ .toggle-text .case-upper {
-    color: rgba(255, 255, 255, 0.6);
-    font-weight: 400;
-}
-
-.toggle-input:checked ~ .toggle-text .case-lower {
-    color: white;
-    font-weight: 600;
-}
 
 .flashcard {
     background: white;
@@ -180,9 +56,8 @@ main {
     box-shadow: 0 20px 40px rgba(0,0,0,0.2);
     cursor: pointer;
     transition: all 0.3s ease;
-    min-height: 300px;
-    width: 100%;
-    max-width: 400px;
+    width: 400px;
+    height: 350px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -196,33 +71,43 @@ main {
 }
 
 .card-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     text-align: center;
     width: 100%;
+    height: 100%;
 }
 
 .letter {
-    font-family: 'Ponomar', 'Times New Roman', serif;
-    font-size: 8rem;
+    font-family: 'Pochaevsk', 'Times New Roman', serif;
+    font-size: 7.5rem;
     font-weight: 400;
     color: #4a5568;
     margin-bottom: 1rem;
     line-height: 1;
+    text-align: center;
+    width: 100%;
     text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
     transition: all 0.3s ease;
 }
 
 .letter-name {
-    font-family: 'Ponomar', 'Times New Roman', serif;
+    font-family: 'Pochaevsk', 'Times New Roman', serif;
     font-size: 2.5rem;
     color: #2d3748;
     font-weight: 400;
     margin-top: 1rem;
+    min-height: 3rem;
     opacity: 0;
-    animation: fadeIn 0.5s ease forwards;
+    visibility: hidden;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
 }
 
 .letter-name.show {
     opacity: 1;
+    visibility: visible;
 }
 
 @keyframes fadeIn {
@@ -262,47 +147,25 @@ footer {
     }
     
     .flashcard {
+        width: 350px;
+        height: 300px;
         padding: 2rem 1.5rem;
-        min-height: 250px;
     }
     
     .letter {
-        font-size: 6rem;
+        font-size: 5.5rem;
     }
     
     .letter-name {
         font-size: 2rem;
+        min-height: 2.5rem;
     }
     
     .controls {
         gap: 0.5rem;
     }
     
-    .toggle-label {
-        padding: 1rem 1.2rem;
-        min-height: 60px;
-        border: 3px solid rgba(255, 255, 255, 0.3);
-    }
-    
-    .toggle-slider {
-        width: 50px;
-        height: 26px;
-        margin-right: 1rem;
-    }
-    
-    .toggle-slider::before {
-        width: 22px;
-        height: 22px;
-    }
-    
-    .toggle-input:checked + .toggle-slider::before {
-        transform: translateX(24px);
-    }
-    
-    .toggle-text {
-        font-size: 1.1rem;
-        gap: 0.7rem;
-    }
+
     
 
     
@@ -319,47 +182,21 @@ footer {
     }
     
     .flashcard {
+        width: 300px;
+        height: 250px;
         padding: 1.5rem 1rem;
-        min-height: 200px;
     }
     
     .letter {
-        font-size: 4.5rem;
+        font-size: 4rem;
     }
     
     .letter-name {
         font-size: 1.5rem;
+        min-height: 2rem;
     }
     
-    .letter-case-toggle {
-        margin-bottom: 1rem;
-    }
-    
-    .toggle-label {
-        padding: 1.2rem 1.4rem;
-        min-height: 70px;
-        border: 4px solid rgba(255, 255, 255, 0.4);
-    }
-    
-    .toggle-slider {
-        width: 55px;
-        height: 30px;
-        margin-right: 1.2rem;
-    }
-    
-    .toggle-slider::before {
-        width: 26px;
-        height: 26px;
-    }
-    
-    .toggle-input:checked + .toggle-slider::before {
-        transform: translateX(25px);
-    }
-    
-    .toggle-text {
-        font-size: 1.2rem;
-        gap: 0.8rem;
-    }
+
     
 
 }
